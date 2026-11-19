@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>HealthNest - Dark Mode</title>
+
+    <style>
+        /* Light Theme */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8f7;
+            color: #222;
+            margin: 0;
+            text-align: center;
+            transition: 0.3s;
+        }
+
+        header {
+            background-color: #087f78;
+            color: white;
+            padding: 25px;
+        }
+
+        nav {
+            background-color: #064e49;
+            padding: 15px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin: 15px;
+        }
+
+        .container {
+            background-color: white;
+            color: #222;
+            width: 80%;
+            max-width: 500px;
+            margin: 30px auto;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 2px 8px #ccc;
+        }
+
+        h2 {
+            color: #087f78;
+        }
+
+        button {
+            background-color: #087f78;
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #064e49;
+        }
+
+        footer {
+            background-color: #064e49;
+            color: white;
+            padding: 15px;
+        }
+
+        /* Dark Theme */
+        body.dark {
+            background-color: #121212;
+            color: white;
+        }
+
+        body.dark header {
+            background-color: #1b3d3a;
+        }
+
+        body.dark nav {
+            background-color: #111;
+        }
+
+        body.dark .container {
+            background-color: #252525;
+            color: white;
+            box-shadow: 0 2px 8px #444;
+        }
+
+        body.dark h2 {
+            color: #4dd0c1;
+        }
+
+        body.dark footer {
+            background-color: #111;
+        }
+
+        body.dark button {
+            background-color: #16a085;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>HealthNest</h1>
+        <p>Preventive Healthcare and Diagnostics</p>
+    </header>
+
+    <nav>
+        <a href="#home">Home</a>
+        <a href="#services">Services</a>
+        <a href="#contact">Contact</a>
+    </nav>
+
+    <!-- Theme Buttons -->
+    <div class="container" id="home">
+
+        <h2>Welcome to HealthNest</h2>
+
+        <p>
+            Your health is our priority!
+            Choose your preferred display theme.
+        </p>
+
+        <button onclick="lightMode()">
+            Light Mode
+        </button>
+
+        <button onclick="darkMode()">
+            Dark Mode
+        </button>
+
+    </div>
+
+    <!-- Services Section -->
+    <div class="container" id="services">
+
+        <h2>Our Healthcare Services</h2>
+
+        <h3>Health Checkup</h3>
+        <p>Regular health checkups for early disease detection.</p>
+
+        <h3>Diagnostics</h3>
+        <p>Accurate medical tests for health monitoring.</p>
+
+        <h3>Consultation</h3>
+        <p>Professional medical advice for better health.</p>
+
+    </div>
+
+    <footer id="contact">
+        <p>&copy; 2026 HealthNest. All Rights Reserved.</p>
+        <p>healthnest@gmail.com</p>
+    </footer>
+
+    <script>
+
+        // Light Mode Function 
+        function lightMode() {
+            document.body.classList.remove("dark");
+
+            localStorage.setItem("theme", "light");
+        }
+
+        // Dark Mode Function 
+        function darkMode() {
+            document.body.classList.add("dark");
+
+            localStorage.setItem("theme", "dark");
+        }
+
+        // System Preference Fallback 
+        let savedTheme = localStorage.getItem("theme");
+
+        if (savedTheme === "dark") {
+            darkMode();
+        }
+        else if (savedTheme === "light") {
+            lightMode();
+        }
+        else if (window.matchMedia(
+            "(prefers-color-scheme: dark)"
+        ).matches) {
+            darkMode();
+        }
+        else {
+            lightMode();
+        }
+
+    </script>
+
+</body>
+
+</html>
